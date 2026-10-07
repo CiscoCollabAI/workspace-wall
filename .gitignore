@@ -1,0 +1,6 @@
+# Kept local on purpose and never published: architecture, security design, data contract
+docs/
+mockup/sample-viewmodel.json
+
+# OS / editor noise
+.DS_Store

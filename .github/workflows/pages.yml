@@ -1,0 +1,51 @@
+# Publishes the mock-up (mockup/index.html + fonts) to GitHub Pages.
+# mockup/index.html is written without <html>/<head> (it is also published as a claude.ai artifact),
+# so the build wraps it in a minimal standards-mode page.
+name: Deploy mock-up to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths: ["mockup/**", ".github/workflows/pages.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+      - name: Build static site
+        run: |
+          mkdir -p _site/fonts
+          {
+            printf '<!doctype html>\n<html lang="en">\n<head>\n'
+            printf '<meta charset="utf-8">\n'
+            printf '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
+            printf '<meta name="referrer" content="no-referrer">\n'
+            printf '%s\n' "<meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'\">"
+            printf '</head>\n<body>\n'
+            cat mockup/index.html
+            printf '\n</body>\n</html>\n'
+          } > _site/index.html
+          cp mockup/fonts/*.woff2 mockup/fonts/OFL.txt _site/fonts/
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

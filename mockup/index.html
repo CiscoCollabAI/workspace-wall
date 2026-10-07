@@ -1,0 +1,1356 @@
+<title>Westpark Workspace Wall</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+  /* Self-hosted Barlow (SIL OFL 1.1, see fonts/OFL.txt): no third-party CDN */
+  @font-face { font-family: "Barlow"; font-style: normal; font-weight: 400; font-display: swap; src: url("fonts/barlow-400.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face { font-family: "Barlow"; font-style: normal; font-weight: 500; font-display: swap; src: url("fonts/barlow-500.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face { font-family: "Barlow"; font-style: normal; font-weight: 600; font-display: swap; src: url("fonts/barlow-600.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face { font-family: "Barlow"; font-style: normal; font-weight: 700; font-display: swap; src: url("fonts/barlow-700.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face { font-family: "Barlow Semi Condensed"; font-style: normal; font-weight: 500; font-display: swap; src: url("fonts/barlow-semi-condensed-500.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face { font-family: "Barlow Semi Condensed"; font-style: normal; font-weight: 600; font-display: swap; src: url("fonts/barlow-semi-condensed-600.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+  /* Tokens: dark-first signage design, light theme provided */
+  :root {
+    color-scheme: dark;
+    --page: #0b1013;
+    --tile: #131a1e;
+    --tile-2: #182126;
+    --pop: #1b252b;
+    --line: #26323a;
+    --ink: #eef3f5;
+    --ink-2: #aab7be;
+    --muted: #8b99a1;
+    --accent: #5fb7d4;
+    --accent-fill: rgba(95, 183, 212, 0.18);
+    --good: #0ca30c;
+    --good-ink: #5fd35f;
+    --busy: #d03b3b;
+    --busy-ink: #ff8a8a;
+    --warn: #fab219;
+    --warn-ink: #fcc95a;
+    --serious: #ec835a;
+    --idle: #5d6a71;
+    /* Status marks (dots, sparkline end) need 3:1 against the page and tiles */
+    --good-mark: #0ca30c;
+    --busy-mark: #e05252;
+    --warn-mark: #fab219;
+    --idle-mark: #75848b;
+    --chip-alpha: 22%;
+    --shadow: 0 0.6rem 2rem rgba(0, 0, 0, 0.5);
+    --font: "Barlow", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-cond: "Barlow Semi Condensed", "Barlow", "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      color-scheme: light;
+      --page: #eceff0;
+      --tile: #ffffff;
+      --tile-2: #f4f6f7;
+      --pop: #ffffff;
+      --line: #d3dade;
+      --ink: #0e1a20;
+      --ink-2: #44545c;
+      --muted: #56656c;
+      --accent: #186a89;
+      --accent-fill: rgba(24, 106, 137, 0.14);
+      --good-ink: #08700a;
+      --busy-ink: #a82424;
+      --warn-ink: #8a5a00;
+      --serious: #ad4a1c;
+      --idle: #8b979d;
+      --good-mark: #0a7d0a;
+      --busy-mark: #c23232;
+      --warn-mark: #a66a00;
+      --idle-mark: #6b787e;
+      --chip-alpha: 16%;
+      --shadow: 0 0.6rem 2rem rgba(14, 26, 32, 0.18);
+    }
+  }
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --page: #eceff0;
+    --tile: #ffffff;
+    --tile-2: #f4f6f7;
+    --pop: #ffffff;
+    --line: #d3dade;
+    --ink: #0e1a20;
+    --ink-2: #44545c;
+    --muted: #56656c;
+    --accent: #186a89;
+    --accent-fill: rgba(24, 106, 137, 0.14);
+    --good-ink: #08700a;
+    --busy-ink: #a82424;
+    --warn-ink: #8a5a00;
+    --serious: #ad4a1c;
+    --idle: #8b979d;
+    --good-mark: #0a7d0a;
+    --busy-mark: #c23232;
+    --warn-mark: #a66a00;
+    --idle-mark: #6b787e;
+    --chip-alpha: 16%;
+    --shadow: 0 0.6rem 2rem rgba(14, 26, 32, 0.18);
+  }
+
+  /* Scales with the screen: 16px at 1080p, 32px on a 1:1 4K panel */
+  html { font-size: clamp(14px, 0.833vw, 40px); height: 100%; }
+  body {
+    height: 100%;
+    margin: 0;
+    background: var(--page);
+    color: var(--ink);
+    font-family: var(--font);
+    font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+  }
+  button, input, select { font: inherit; color: inherit; }
+  .wall {
+    box-sizing: border-box;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    padding: 1rem max(16px, 1.25rem);
+    transition: transform 1s ease;
+  }
+  .wall.fit { height: 100%; }
+
+  /* Header */
+  .top {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1rem 2rem;
+  }
+  .site h1 {
+    margin: 0;
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+    text-wrap: balance;
+  }
+  .site p {
+    margin: 0.2rem 0 0;
+    font-family: var(--font-cond);
+    font-size: 0.95rem;
+    color: var(--ink-2);
+    letter-spacing: 0.02em;
+  }
+  .summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2.2rem;
+    justify-content: center;
+  }
+  .stat { display: grid; gap: 0.1rem; }
+  .stat b { font-size: 1.7rem; font-weight: 600; line-height: 1; }
+  .stat b small { font-size: 0.95rem; font-weight: 500; color: var(--muted); margin-left: 0.15rem; }
+  .stat span {
+    font-family: var(--font-cond);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-2);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .dot { width: 0.6rem; height: 0.6rem; border-radius: 50%; display: inline-block; flex: none; }
+  .clockbox { text-align: right; display: grid; gap: 0.25rem; justify-items: end; }
+  .clock { font-size: 2.3rem; font-weight: 600; line-height: 1; letter-spacing: -0.01em; }
+  .live {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-cond);
+    font-size: 0.85rem;
+    color: var(--ink-2);
+  }
+  .live .dot { background: var(--good-mark); box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--good-mark) 25%, transparent); }
+  .live.paused .dot { background: var(--idle-mark); box-shadow: none; }
+
+  /* Filter bar */
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.4rem;
+    align-items: center;
+    font-family: var(--font-cond);
+    font-size: 0.88rem;
+    color: var(--muted);
+  }
+  .fgroup { display: inline-flex; align-items: center; gap: 0.5rem; }
+  .btn, .sel {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--tile);
+    border: 1px solid var(--line);
+    border-radius: 0.4rem;
+    padding: 0.3rem 0.7rem;
+    min-height: 24px;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .btn b { font-weight: 600; }
+  .btn .caret { color: var(--muted); font-size: 0.75em; }
+  .btn[aria-expanded="true"] { border-color: var(--accent); }
+  .sel { padding-right: 0.4rem; }
+  button:focus-visible, input:focus-visible, select:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  /* Visually hidden, still read by screen readers */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 0.4rem; overflow: hidden; }
+  .seg button {
+    color: var(--ink-2);
+    background: transparent;
+    border: 0;
+    padding: 0.3rem 0.75rem;
+    min-height: 24px;
+    cursor: pointer;
+  }
+  .seg button + button { border-left: 1px solid var(--line); }
+  .seg button[aria-pressed="true"] { background: var(--tile-2); color: var(--ink); font-weight: 600; }
+  .result { margin-left: auto; display: inline-flex; gap: 0.6rem; align-items: center; color: var(--ink-2); }
+  .link {
+    background: none;
+    border: 0;
+    padding: 0 0.2rem;
+    min-height: 24px;
+    color: var(--accent);
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+
+  /* Dropdown panels and tile popover (live outside the grid) */
+  .panel {
+    position: fixed;
+    z-index: 20;
+    width: min(22rem, calc(100vw - 32px));
+    max-height: min(70vh, 34rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    background: var(--pop);
+    border: 1px solid var(--line);
+    border-radius: 0.6rem;
+    box-shadow: var(--shadow);
+    padding: 0.8rem;
+    font-family: var(--font-cond);
+    font-size: 0.92rem;
+    color: var(--ink);
+  }
+  .panel h3 {
+    margin: 0;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .panel .search {
+    width: 100%;
+    box-sizing: border-box;
+    background: var(--tile-2);
+    border: 1px solid var(--line);
+    border-radius: 0.4rem;
+    padding: 0.45rem 0.6rem;
+  }
+  .panel .row { display: flex; flex-wrap: wrap; gap: 0.4rem 0.8rem; align-items: center; }
+  .panel .row .push { margin-left: auto; }
+  .panel .mini {
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 0.35rem;
+    padding: 0.25rem 0.6rem;
+    min-height: 24px;
+    color: var(--ink-2);
+    cursor: pointer;
+  }
+  .list {
+    overflow-y: auto;
+    min-height: 0;
+    display: grid;
+    gap: 0.1rem;
+    border-top: 1px solid var(--line);
+    padding-top: 0.4rem;
+  }
+  .check {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.3rem 0.35rem;
+    min-height: 28px;
+    box-sizing: border-box;
+    border-radius: 0.3rem;
+    cursor: pointer;
+  }
+  .check:hover { background: var(--tile-2); }
+  .check input { width: 1rem; height: 1rem; accent-color: var(--accent); margin: 0; flex: none; }
+  .check .sub { margin-left: auto; color: var(--muted); font-size: 0.85em; white-space: nowrap; }
+  .panel .empty { color: var(--muted); padding: 0.4rem 0.35rem; }
+  .panel .foot { border-top: 1px solid var(--line); padding-top: 0.6rem; display: flex; gap: 0.6rem; flex-wrap: wrap; }
+  .metric-groups { display: grid; gap: 0.7rem; }
+
+  /* Grid of tiles */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(var(--cols, 5), minmax(0, 1fr));
+    gap: 0.75rem;
+    flex: 1;
+    min-height: 0;
+  }
+  .wall.fit .grid { grid-auto-rows: minmax(0, 1fr); }
+
+  .tile {
+    --k: 1;
+    position: relative;
+    background: var(--tile);
+    border: 1px solid var(--line);
+    border-radius: 0.6rem;
+    padding: calc(0.75rem * var(--k)) calc(0.95rem * var(--k));
+    display: flex;
+    flex-direction: column;
+    gap: calc(0.4rem * var(--k));
+    min-width: 0;
+    overflow: hidden;
+  }
+  .grid[data-scale="l"] .tile { --k: 1.22; }
+  .grid[data-scale="s"] .tile { --k: 0.84; }
+
+  .head { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; min-width: 0; }
+  .name { min-width: 0; flex: 1; }
+  .name h2 {
+    margin: 0;
+    font-size: calc(1.35rem * var(--k));
+    font-weight: 700;
+    line-height: 1.1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .name p {
+    margin: 0.15rem 0 0;
+    font-family: var(--font-cond);
+    font-size: calc(0.82rem * var(--k));
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .name .custom {
+    font-family: var(--font-cond);
+    font-size: 0.62em;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+    border-radius: 0.25rem;
+    padding: 0 0.3em;
+    margin-left: 0.4em;
+    vertical-align: 0.2em;
+  }
+  .tools { display: flex; align-items: center; gap: 0.35rem; flex: none; }
+  .gear {
+    display: inline-grid;
+    place-items: center;
+    width: max(24px, calc(1.6rem * var(--k)));
+    height: max(24px, calc(1.6rem * var(--k)));
+    border-radius: 0.4rem;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 0;
+  }
+  .gear:hover, .gear[aria-expanded="true"] { border-color: var(--line); color: var(--ink); background: var(--tile-2); }
+  .gear svg { width: 60%; height: 60%; }
+  .chip {
+    --c: var(--idle);
+    --ci: var(--ink-2);
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: calc(0.28rem * var(--k)) calc(0.6rem * var(--k)) calc(0.28rem * var(--k)) calc(0.45rem * var(--k));
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--c) var(--chip-alpha), transparent);
+    border: 1px solid color-mix(in srgb, var(--c) 55%, transparent);
+    color: var(--ci);
+    font-family: var(--font-cond);
+    font-weight: 600;
+    font-size: calc(0.9rem * var(--k));
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+  .chip svg { width: 1.05em; height: 1.05em; flex: none; }
+  .s-available .chip { --c: var(--good); --ci: var(--good-ink); }
+  .s-occupied .chip { --c: var(--busy); --ci: var(--busy-ink); }
+  .s-ghost .chip { --c: var(--warn); --ci: var(--warn-ink); }
+  .s-stale .chip { --c: var(--idle); --ci: var(--ink-2); }
+
+  .occ { display: grid; grid-template-columns: 1fr; align-items: end; gap: 0.2rem 1rem; }
+  .occ.c2 { grid-template-columns: 1fr auto; }
+  .occ.c3 { grid-template-columns: 1fr auto auto; }
+  .occ > div:not(.bar) { display: grid; gap: 0.2rem; min-width: 0; grid-row: 1; }
+  .ghostv { font-size: calc(1.15rem * var(--k)); font-weight: 600; line-height: 1.1; display: inline-flex; align-items: center; gap: 0.3rem; justify-content: flex-end; white-space: nowrap; }
+  .ghostv svg { width: 0.85em; height: 0.85em; flex: none; }
+  .ghostv.has { color: var(--warn-ink); }
+  .ghostv.zero { color: var(--muted); font-weight: 500; }
+  .ghostv small { font-size: 0.72em; font-weight: 500; color: var(--ink-2); }
+  .occ .lbl, .env .lbl {
+    font-family: var(--font-cond);
+    font-size: calc(0.7rem * var(--k));
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+  .occ .r { text-align: right; }
+  .people { font-size: calc(1.15rem * var(--k)); font-weight: 600; line-height: 1.1; }
+  .people small { color: var(--muted); font-weight: 500; font-size: 0.8em; }
+  .util { font-size: calc(1.15rem * var(--k)); font-weight: 600; line-height: 1.1; }
+  .bar {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    height: calc(0.4rem * var(--k));
+    border-radius: 999px;
+    background: var(--tile-2);
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .bar i { display: block; height: 100%; background: var(--accent); border-radius: 999px; transition: width 0.6s ease; }
+
+  .spark { position: relative; flex: 1; min-height: calc(1.9rem * var(--k)); }
+  .spark svg { position: absolute; left: 0; right: 0; bottom: 0; top: calc(1.1rem * var(--k)); width: 100%; height: calc(100% - 1.1rem * var(--k)); overflow: visible; }
+  .spark .end { position: absolute; width: calc(0.5rem * var(--k)); height: calc(0.5rem * var(--k)); border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 2px var(--tile); transform: translate(-50%, -50%); }
+  .spark .tip {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-family: var(--font-cond);
+    font-size: calc(0.72rem * var(--k));
+    color: var(--ink-2);
+    pointer-events: none;
+  }
+  .fill { flex: 1; }
+
+  .env {
+    display: grid;
+    grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr));
+    gap: 0.4rem;
+    border-top: 1px solid var(--line);
+    padding-top: calc(0.5rem * var(--k));
+  }
+  .env > div { display: grid; gap: 0.05rem; min-width: 0; align-content: start; }
+  .env .lbl { white-space: nowrap; }
+  .env .val { font-size: calc(1.05rem * var(--k)); font-weight: 600; line-height: 1.15; white-space: nowrap; }
+  .env .val small { font-weight: 500; color: var(--muted); font-size: 0.78em; margin-left: 0.1em; }
+  .env .na { font-family: var(--font-cond); font-size: calc(0.82rem * var(--k)); color: var(--muted); line-height: 1.3; }
+  .flag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.15rem;
+    font-family: var(--font-cond);
+    font-size: calc(0.7rem * var(--k));
+    font-weight: 600;
+    color: var(--serious);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .s-stale {
+    background: repeating-linear-gradient(135deg, var(--tile) 0 10px, var(--tile-2) 10px 20px);
+    border-style: dashed;
+    border-color: var(--idle-mark);
+  }
+  .s-stale .people, .s-stale .util, .s-stale .env .val { color: var(--ink-2); }
+  .s-stale .bar i, .s-stale .spark .end { background: var(--idle-mark); }
+  .s-stale .spark path[stroke] { stroke: var(--idle-mark); }
+
+  .none {
+    grid-column: 1 / -1;
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    display: grid;
+    gap: 0.8rem;
+    justify-items: center;
+    padding: 3rem 1rem;
+    color: var(--ink-2);
+    font-size: 1.2rem;
+  }
+  .none .btn { font-family: var(--font-cond); font-size: 0.95rem; }
+
+  /* Footer legend */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.6rem;
+    align-items: center;
+    font-family: var(--font-cond);
+    font-size: 0.82rem;
+    color: var(--ink-2);
+  }
+  .legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
+  .legend .demo { margin-left: auto; color: var(--muted); }
+
+  /* Smaller screens: laptops, tablets, phones */
+  @media (max-width: 1100px) {
+    .top { grid-template-columns: 1fr auto; }
+    .summary { grid-column: 1 / -1; grid-row: 2; justify-content: flex-start; }
+    .grid { grid-template-columns: repeat(min(var(--cols, 3), 3), minmax(0, 1fr)); }
+    .result { margin-left: 0; }
+  }
+  @media (max-width: 820px) { .grid { grid-template-columns: repeat(min(var(--cols, 2), 2), minmax(0, 1fr)); } }
+  @media (max-width: 560px) {
+    html { font-size: 15px; }
+    .grid { grid-template-columns: minmax(0, 1fr); }
+    .site h1 { font-size: 1.5rem; }
+    .clock { font-size: 1.6rem; }
+    .summary { gap: 0.6rem 1.4rem; }
+    .stat b { font-size: 1.35rem; }
+    .legend .demo { margin-left: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .wall, .bar i { transition: none; }
+  }
+</style>
+
+<div class="wall" id="wall">
+  <header class="top">
+    <div class="site">
+      <h1 id="siteName">Westpark Office</h1>
+      <p id="siteSub">Floors 3–4 · Meeting rooms &amp; focus spaces</p>
+    </div>
+    <div class="summary" id="summary"></div>
+    <div class="clockbox">
+      <div class="clock" id="clock">--:--</div>
+      <div class="live" id="live"><span class="dot" aria-hidden="true"></span><span id="asof">Live</span></div>
+    </div>
+  </header>
+
+  <div class="filters" role="group" aria-label="Dashboard filters">
+    <div class="fgroup">
+      <button type="button" class="btn" id="wsBtn" aria-haspopup="dialog" aria-expanded="false" aria-controls="wsPanel">
+        Workspaces <b id="wsCount">20 of 30</b><span class="caret">▼</span>
+      </button>
+    </div>
+    <div class="fgroup">
+      <span>Floor</span>
+      <div class="seg" id="floorSeg">
+        <button type="button" id="fAll" data-v="all" aria-pressed="true">All</button>
+        <button type="button" id="f3" data-v="Floor 3" aria-pressed="false">Floor 3</button>
+        <button type="button" id="f4" data-v="Floor 4" aria-pressed="false">Floor 4</button>
+      </div>
+    </div>
+    <div class="fgroup">
+      <label for="condSel">Show</label>
+      <select class="sel" id="condSel">
+        <option value="all">All selected</option>
+        <optgroup label="Space utilization">
+          <option value="available">Available</option>
+          <option value="occupied">Occupied</option>
+          <option value="ghost">Booked · empty</option>
+          <option value="stale">No data</option>
+          <option value="ghosted">Ghosted meetings today</option>
+        </optgroup>
+        <optgroup label="Environment">
+          <option value="comfort">Outside comfort (any)</option>
+          <option value="temp">Temperature out of range</option>
+          <option value="hum">Humidity out of range</option>
+          <option value="tvoc">TVOC high</option>
+          <option value="noise">Noise high</option>
+        </optgroup>
+      </select>
+    </div>
+    <div class="fgroup">
+      <button type="button" class="btn" id="mBtn" aria-haspopup="dialog" aria-expanded="false" aria-controls="mPanel">
+        Metrics <b id="mCount">7 of 7</b><span class="caret">▼</span>
+      </button>
+    </div>
+    <div class="result">
+      <span id="resultText" aria-live="polite">Showing 20 workspaces</span>
+      <button type="button" class="link" id="clearAll" hidden>Clear filters</button>
+      <button type="button" class="btn" id="pauseBtn" aria-pressed="false">Pause updates</button>
+    </div>
+  </div>
+
+  <main class="grid" id="grid" aria-label="Workspaces"></main>
+
+  <footer class="legend">
+    <span><i class="dot" aria-hidden="true" style="background:var(--good-mark)"></i>Available</span>
+    <span><i class="dot" aria-hidden="true" style="background:var(--busy-mark)"></i>Occupied (people detected)</span>
+    <span><i class="dot" aria-hidden="true" style="background:var(--warn-mark)"></i>Booked but empty (ghost meeting in progress)</span>
+    <span>Ghosted = booked, but no one detected in the room for the whole booking</span>
+    <span><i class="dot" aria-hidden="true" style="background:var(--idle-mark)"></i>No data &gt; 10 min</span>
+    <span>Comfort: 21–25 °C · 30–60 % RH · TVOC index &lt; 2.99 · ≤ 40 dBA (Cisco “excellent” ranges)</span>
+    <span class="demo">Simulated demo data · filters are saved in this browser; in production each permalink stores its own view</span>
+  </footer>
+</div>
+
+<!-- Workspace picker -->
+<div class="panel" id="wsPanel" role="dialog" aria-label="Choose workspaces" hidden>
+  <input class="search" id="wsSearch" type="search" placeholder="Search by name, floor or room type" autocomplete="off" aria-label="Search workspaces">
+  <div class="row">
+    <button type="button" class="mini" id="wsAll">Select all matches</button>
+    <button type="button" class="mini" id="wsNone">Clear</button>
+    <span class="push">Quick pick</span>
+    <button type="button" class="mini" data-first="12">First 12</button>
+    <button type="button" class="mini" data-first="20">20</button>
+    <button type="button" class="mini" data-first="30">30</button>
+  </div>
+  <div class="list" id="wsList" role="group" aria-label="Workspaces"></div>
+</div>
+
+<!-- Global metrics -->
+<div class="panel" id="mPanel" role="dialog" aria-label="Metrics shown on all tiles" hidden>
+  <div class="metric-groups" id="mGroups"></div>
+  <div class="foot">
+    <button type="button" class="mini" id="mAllOn">Show all</button>
+    <button type="button" class="mini" id="mReset">Reset all tile overrides</button>
+  </div>
+</div>
+
+<!-- Per-tile metrics -->
+<div class="panel" id="tPanel" role="dialog" aria-labelledby="tTitle" hidden>
+  <h3 id="tTitle">Metrics for this workspace</h3>
+  <div class="metric-groups" id="tGroups"></div>
+  <div class="foot">
+    <button type="button" class="mini" id="tDefault">Use dashboard default</button>
+  </div>
+</div>
+
+<script>
+(() => {
+  "use strict";
+  // Page language for assistive technology (WCAG 3.1.1); the hosting page supplies doctype/charset/viewport
+  document.documentElement.lang = "en";
+
+  // Thresholds: Cisco "excellent" ranges, help.webex.com/article/nc6od6r (configurable in production)
+  const T = { temp: [21, 25], hum: [30, 60], tvocMax: 2.99, noiseMax: 40, staleMin: 10 };
+  const TYPE = { meetingRoom: "Meeting room", huddle: "Huddle room", focus: "Focus room", open: "Open area" };
+
+  const METRICS = [
+    { key: "people", label: "People now", group: "Space utilization" },
+    { key: "used", label: "Used today", group: "Space utilization" },
+    { key: "trend", label: "12 h people trend", group: "Space utilization" },
+    { key: "ghost", label: "Ghosted meetings today", group: "Space utilization" },
+    { key: "temp", label: "Temperature", group: "Environment" },
+    { key: "hum", label: "Humidity", group: "Environment" },
+    { key: "tvoc", label: "TVOC index (air quality)", group: "Environment" },
+    { key: "noise", label: "Noise", group: "Environment" },
+  ];
+  const ALL_METRICS = METRICS.map((m) => m.key);
+  const CONDITION_LABEL = {
+    all: "", available: "Available", occupied: "Occupied", ghost: "Booked · empty", stale: "No data",
+    ghosted: "Ghosted meetings today", comfort: "Outside comfort", temp: "Temperature out of range", hum: "Humidity out of range",
+    tvoc: "TVOC high", noise: "Noise high",
+  };
+
+  // Deterministic random so the first frame is stable
+  let seed = 20261002;
+  const rnd = () => {
+    seed |= 0; seed = (seed + 0x6d2b79f5) | 0;
+    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+  const pick = (a) => a[Math.floor(rnd() * a.length)];
+  const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+
+  // Fictional workspaces. [name, floor, type, capacity, device, hasEnvSensors]
+  const DEFS = [
+    ["Isar", "Floor 3", "meetingRoom", 8, "Room Bar Pro + Navigator", true],
+    ["Chiemsee", "Floor 4", "meetingRoom", 12, "Board Pro 75", true],
+    ["Würm", "Floor 3", "huddle", 4, "Desk Pro", true],
+    ["Tegernsee", "Floor 4", "focus", 2, "Desk Mini", true],
+    ["Amper", "Floor 3", "meetingRoom", 10, "Room Kit EQ + Navigator", true],
+    ["Ammersee", "Floor 4", "huddle", 5, "Room Bar", false],
+    ["Loisach", "Floor 3", "focus", 1, "Desk Mini", true],
+    ["Starnberg", "Floor 4", "meetingRoom", 14, "Room Kit Pro + Navigator", true],
+    ["Mangfall", "Floor 3", "huddle", 4, "Room Bar + Navigator", true],
+    ["Kochelsee", "Floor 4", "open", 16, "Room Bar Pro + Navigator", true],
+    ["Inn", "Floor 3", "meetingRoom", 6, "Board Pro 55", true],
+    ["Walchensee", "Floor 4", "focus", 2, "Desk Pro", true],
+    ["Lech", "Floor 3", "meetingRoom", 8, "Room Bar Pro + Navigator", true],
+    ["Staffelsee", "Floor 4", "huddle", 4, "Room Bar", false],
+    ["Iller", "Floor 3", "focus", 2, "Desk Mini", true],
+    ["Simssee", "Floor 4", "meetingRoom", 6, "Board Pro 55", true],
+    ["Alz", "Floor 3", "open", 12, "Room Bar Pro + Navigator", true],
+    ["Königssee", "Floor 4", "meetingRoom", 10, "Room Kit EQ + Navigator", true],
+    ["Paar", "Floor 3", "huddle", 4, "Room Bar + Navigator", true],
+    ["Eibsee", "Floor 4", "focus", 1, "Desk Mini", true],
+    ["Glonn", "Floor 3", "meetingRoom", 6, "Room Bar + Navigator", true],
+    ["Schliersee", "Floor 4", "huddle", 4, "Desk Pro", true],
+    ["Sempt", "Floor 3", "focus", 2, "Desk Mini", true],
+    ["Riegsee", "Floor 4", "meetingRoom", 8, "Room Bar Pro + Navigator", true],
+    ["Attel", "Floor 3", "huddle", 5, "Room Bar", false],
+    ["Pilsensee", "Floor 4", "open", 12, "Room Bar Pro + Navigator", true],
+    ["Vils", "Floor 3", "meetingRoom", 14, "Room Kit Pro + Navigator", true],
+    ["Wörthsee", "Floor 4", "focus", 2, "Desk Mini", true],
+    ["Rott", "Floor 3", "meetingRoom", 8, "Board Pro 75", true],
+    ["Hopfensee", "Floor 4", "huddle", 4, "Room Bar + Navigator", true],
+  ];
+
+  // Simulated bookings for today: [{ minutes, attended }]. In production each booking comes from
+  // Workspace Integrations (Bookings.Start .. Bookings.End, keyed by booking Id); it is "ghosted"
+  // when Firehose telemetry shows no presence and peopleCount = 0 for that workspace in between.
+  function makeBookings() {
+    const n = Math.floor(rnd() * 5);
+    return Array.from({ length: n }, () => ({
+      minutes: pick([30, 30, 60, 60, 90, 120]),
+      attended: rnd() > 0.12,
+    }));
+  }
+  const ghostStats = (s) => {
+    const booked = s.bookings.reduce((a, b) => a + b.minutes, 0);
+    const ghosted = s.bookings.filter((b) => !b.attended);
+    const mins = ghosted.reduce((a, b) => a + b.minutes, 0);
+    return { count: ghosted.length, minutes: mins, booked, pct: booked ? Math.round((mins / booked) * 100) : 0 };
+  };
+  const hrs = (m) => (m / 60).toFixed(m % 60 ? 1 : 0) + " h";
+
+  const HOURS = 12; // sparkline window: last 12 hours, hourly peak people count
+  const now = Date.now();
+
+  const spaces = DEFS.map(([name, floor, type, capacity, device, env], i) => {
+    const busy = rnd() < 0.5;
+    const people = busy ? 1 + Math.floor(rnd() * capacity * 0.9) : 0;
+    const hourly = Array.from({ length: HOURS }, (_, h) =>
+      h < 2 ? 0 : (rnd() < 0.55 ? Math.round(rnd() * capacity * 0.85) : 0));
+    hourly[HOURS - 1] = Math.max(hourly[HOURS - 1], people);
+    return {
+      id: "ws-" + i,
+      name, floor, type, capacity, device,
+      sensors: { env },
+      presence: people > 0,
+      peopleCount: people,
+      booked: rnd() < 0.25,
+      utilizationTodayPct: Math.round(15 + rnd() * 65),
+      temperatureC: +(21.2 + rnd() * 3.4).toFixed(1),
+      humidityPct: Math.round(34 + rnd() * 20),
+      tvocIndex: +(1.1 + rnd() * 1.5).toFixed(1),
+      noiseDba: Math.round(28 + rnd() * 11),
+      hourly,
+      updatedAt: now - Math.floor(rnd() * 90) * 1000,
+      bookings: makeBookings(),
+      ghostSinceMin: 4 + Math.floor(rnd() * 20),
+    };
+  });
+  const byId = new Map(spaces.map((s) => [s.id, s]));
+
+  // Seed the states worth showing in a review
+  const byName = (n) => spaces.find((s) => s.name === n);
+  Object.assign(byName("Amper"), { presence: false, peopleCount: 0, booked: true });
+  Object.assign(byName("Starnberg"), { presence: true, peopleCount: 13, temperatureC: 25.8, tvocIndex: 3.4, humidityPct: 58 });
+  Object.assign(byName("Kochelsee"), { noiseDba: 47, presence: true, peopleCount: 9 });
+  Object.assign(byName("Simssee"), { updatedAt: now - 14 * 60 * 1000 });
+  Object.assign(byName("Würm"), { humidityPct: 27 });
+  Object.assign(byName("Loisach"), { presence: false, peopleCount: 0, booked: false });
+  byName("Starnberg").hourly[HOURS - 1] = 13;
+  byName("Kochelsee").hourly[HOURS - 1] = 9;
+  byName("Amper").bookings = [{ minutes: 60, attended: false }, { minutes: 30, attended: true }, { minutes: 90, attended: false }, { minutes: 60, attended: true }];
+  byName("Amper").ghostSinceMin = 12;
+  byName("Lech").bookings = [{ minutes: 60, attended: false }, { minutes: 60, attended: true }];
+  byName("Chiemsee").bookings = [{ minutes: 120, attended: false }, { minutes: 60, attended: true }, { minutes: 30, attended: true }];
+  byName("Inn").bookings = [{ minutes: 30, attended: false }, { minutes: 60, attended: true }];
+
+  // ---- View state (saved per browser; server-side per permalink in production) ----
+  const STORE = "wsWall.view.v3";
+  const state = {
+    selected: new Set(spaces.slice(0, 20).map((s) => s.id)),
+    floor: "all",
+    condition: "all",
+    globalMetrics: new Set(ALL_METRICS),
+    overrides: new Map(),
+  };
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORE) || "null");
+    if (saved) {
+      state.selected = new Set(saved.selected.filter((id) => byId.has(id)));
+      state.floor = saved.floor || "all";
+      state.condition = saved.condition || "all";
+      state.globalMetrics = new Set(saved.globalMetrics.filter((k) => ALL_METRICS.includes(k)));
+      state.overrides = new Map(Object.entries(saved.overrides || {})
+        .filter(([id]) => byId.has(id))
+        .map(([id, ks]) => [id, new Set(ks.filter((k) => ALL_METRICS.includes(k)))]));
+    }
+  } catch (e) { /* storage unavailable: use defaults */ }
+  function save() {
+    try {
+      localStorage.setItem(STORE, JSON.stringify({
+        selected: [...state.selected],
+        floor: state.floor,
+        condition: state.condition,
+        globalMetrics: [...state.globalMetrics],
+        overrides: Object.fromEntries([...state.overrides].map(([id, s]) => [id, [...s]])),
+      }));
+    } catch (e) { /* ignore */ }
+  }
+  const metricsFor = (id) => state.overrides.get(id) || state.globalMetrics;
+
+  const grid = document.getElementById("grid");
+  const wall = document.getElementById("wall");
+
+  // ---- Status and conditions ----
+  const statusOf = (s, t) => {
+    if (t - s.updatedAt > T.staleMin * 60 * 1000) return "stale";
+    if (s.presence) return "occupied";
+    if (s.booked) return "ghost";
+    return "available";
+  };
+  const tempOut = (s) => s.sensors.env && (s.temperatureC < T.temp[0] || s.temperatureC > T.temp[1]);
+  const humOut = (s) => s.sensors.env && (s.humidityPct < T.hum[0] || s.humidityPct > T.hum[1]);
+  const tvocHigh = (s) => s.sensors.env && s.tvocIndex >= T.tvocMax;
+  const noiseHigh = (s) => s.noiseDba > T.noiseMax;
+  const outOfRange = (s) => tempOut(s) || humOut(s) || tvocHigh(s) || noiseHigh(s);
+
+  function matches(s, t) {
+    const st = statusOf(s, t);
+    switch (state.condition) {
+      case "all": return true;
+      case "available": case "occupied": case "ghost": case "stale": return st === state.condition;
+      case "comfort": return st !== "stale" && outOfRange(s);
+      case "temp": return st !== "stale" && tempOut(s);
+      case "hum": return st !== "stale" && humOut(s);
+      case "tvoc": return st !== "stale" && tvocHigh(s);
+      case "noise": return st !== "stale" && noiseHigh(s);
+      case "ghosted": return ghostStats(s).count > 0;
+    }
+    return true;
+  }
+
+  const ICONS = {
+    available: '<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5 8.2l2 2 4-4.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    occupied: '<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5" r="2.6" fill="currentColor"/><path d="M3 14c0-3 2.2-4.8 5-4.8s5 1.8 5 4.8z" fill="currentColor"/></svg>',
+    ghost: '<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2 6.5h12M5.5 1.5v3M10.5 1.5v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>',
+    stale: '<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 4.5V8l2.4 1.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>',
+  };
+  const GHOST = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 14.5V7.2a5 5 0 0 1 10 0v7.3l-1.7-1.2-1.6 1.2L8 13.3l-1.7 1.2-1.6-1.2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="6.2" cy="7.4" r="1" fill="currentColor"/><circle cx="9.8" cy="7.4" r="1" fill="currentColor"/></svg>';
+  const GEAR = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4h7M13 4h1M2 8h2M8 8h6M2 12h8M14 12h0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/><circle cx="11" cy="4" r="1.8" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="6" cy="8" r="1.8" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="1.8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>';
+
+  const ago = (ms) => {
+    const m = Math.floor(ms / 60000);
+    return m < 1 ? "just now" : m + " min ago";
+  };
+  const chipText = (st, s, t) => ({
+    available: "Available",
+    occupied: "Occupied",
+    ghost: "Booked · empty " + s.ghostSinceMin + "m",
+    stale: "No data · " + ago(t - s.updatedAt),
+  })[st];
+
+  const flag = (bad, low) => bad ? ` <span class="flag">${low ? "▼ low" : "▲ high"}</span>` : "";
+  // The out-of-range flag sits on the label line so every cell keeps the same height
+  const ENV_FULL = { Temp: "Temperature", RH: "Relative humidity", TVOC: "TVOC air-quality index", Noise: "Ambient noise" };
+  const envCell = (label, has, html, flagHtml = "") =>
+    `<div><span class="lbl"><span aria-hidden="true">${label}</span><span class="sr-only">${ENV_FULL[label]}</span>${has ? flagHtml : ""}</span>${has ? html : '<span class="na">No sensor</span>'}</div>`;
+
+  function sparkSVG(s) {
+    const w = 100, h = 30, max = Math.max(s.capacity, 1);
+    const step = w / (HOURS - 1);
+    const pts = s.hourly.map((v, i) => [i * step, h - 2 - (Math.min(v, max) / max) * (h - 4)]);
+    const line = pts.map((p, i) => (i ? "L" : "M") + p[0].toFixed(2) + " " + p[1].toFixed(2)).join(" ");
+    const area = line + ` L ${w} ${h} L 0 ${h} Z`;
+    const [ex, ey] = pts[pts.length - 1];
+    return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" role="img" aria-label="People count, last 12 hours, peak ${Math.max(...s.hourly)}">
+      <line x1="0" y1="${h - 0.5}" x2="${w}" y2="${h - 0.5}" stroke="var(--line)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+      <path d="${area}" fill="var(--accent-fill)"/>
+      <path d="${line}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+      <line class="cross" x1="0" x2="0" y1="0" y2="${h}" stroke="var(--ink-2)" stroke-width="1" vector-effect="non-scaling-stroke" visibility="hidden"/>
+    </svg><span class="end" style="left:${ex}%;top:calc(1.1rem * var(--k) + (100% - 1.1rem * var(--k)) * ${(ey / h).toFixed(4)})"></span>`;
+  }
+
+  function tileHTML(s, t) {
+    const st = statusOf(s, t);
+    const m = metricsFor(s.id);
+    const custom = state.overrides.has(s.id);
+    const pct = Math.round(clamp(s.peopleCount / s.capacity, 0, 1) * 100);
+    const e = s.sensors.env;
+    const peak = Math.max(...s.hourly);
+
+    // Utilization line: People now | Used today | Ghosted today (each can be hidden)
+    const cols = [];
+    if (m.has("people")) cols.push(`<div><span class="lbl">People now</span><span class="people">${s.peopleCount}<small> / ${s.capacity}</small>${s.peopleCount > s.capacity ? ' <span class="flag">▲ over</span>' : ""}</span></div>`);
+    if (m.has("used")) cols.push(`<div class="r"><span class="lbl">Used today</span><span class="util">${s.utilizationTodayPct}%</span></div>`);
+    if (m.has("ghost")) {
+      const g = ghostStats(s);
+      const tip = g.count
+        ? `${g.count} ghosted ${g.count === 1 ? "meeting" : "meetings"}, ${hrs(g.minutes)} = ${g.pct}% of ${hrs(g.booked)} booked today`
+        : (g.booked ? `No ghosted meetings, ${hrs(g.booked)} booked today` : "No bookings today");
+      cols.push(`<div class="r" title="${tip}"><span class="lbl">Ghosted today</span><span class="ghostv ${g.count ? "has" : "zero"}">${g.count ? GHOST + g.count + " · " + hrs(g.minutes) + `<small>${g.pct}%</small>` : (g.booked ? "0" : "–")}</span></div>`);
+    }
+    if (cols.length && !m.has("people")) cols.unshift("<div></div>");
+    const occ = cols.length
+      ? `<div class="occ c${cols.length}">${cols.join("")}${m.has("people") ? `<div class="bar" role="img" aria-label="Occupancy ${pct}% of capacity"><i style="width:${pct}%"></i></div>` : ""}</div>`
+      : "";
+    const spark = m.has("trend")
+      ? `<div class="spark">${sparkSVG(s)}<span class="tip">12 h · peak ${peak}</span></div>`
+      : '<div class="fill"></div>';
+
+    const cells = [];
+    if (m.has("temp")) cells.push(envCell("Temp", e, `<span class="val">${s.temperatureC.toFixed(1)}<small>°C</small></span>`, flag(tempOut(s), s.temperatureC < T.temp[0])));
+    if (m.has("hum")) cells.push(envCell("RH", e, `<span class="val">${s.humidityPct}<small>%</small></span>`, flag(humOut(s), s.humidityPct < T.hum[0])));
+    if (m.has("tvoc")) cells.push(envCell("TVOC", e, `<span class="val">${s.tvocIndex.toFixed(1)}</span>`, flag(tvocHigh(s), false)));
+    if (m.has("noise")) cells.push(envCell("Noise", true, `<span class="val">${s.noiseDba}<small>dBA</small></span>`, flag(noiseHigh(s), false)));
+    const env = cells.length ? `<div class="env" style="--n:${cells.length}">${cells.join("")}</div>` : "";
+
+    return `<article class="tile s-${st}" data-id="${s.id}" aria-label="${esc(s.name)}, ${chipText(st, s, t)}">
+      <div class="head">
+        <div class="name">
+          <h2>${esc(s.name)}${custom ? '<span class="custom">Custom</span>' : ""}</h2>
+          <p>${s.floor} · ${TYPE[s.type]} · ${s.capacity} ${s.capacity === 1 ? "seat" : "seats"}</p>
+        </div>
+        <div class="tools">
+          <span class="chip">${ICONS[st]}${chipText(st, s, t)}</span>
+          <button type="button" class="gear" data-gear="${s.id}" aria-label="Metrics for ${esc(s.name)}" aria-haspopup="dialog" aria-expanded="${openTile === s.id}">${GEAR}</button>
+        </div>
+      </div>
+      ${occ}
+      ${spark}
+      ${env}
+    </article>`;
+  }
+
+  // ---- Pipeline: selected → floor → condition ----
+  const base = () => spaces.filter((s) => state.selected.has(s.id) && (state.floor === "all" || s.floor === state.floor));
+  const visible = (t) => base().filter((s) => matches(s, t));
+
+  function colsFor(n) {
+    if (n <= 4) return Math.max(n, 1);
+    if (n <= 9) return 3;
+    if (n <= 16) return 4;
+    if (n <= 20) return 5;
+    return 6;
+  }
+  const scaleFor = (n) => (n <= 12 ? "l" : n <= 20 ? "m" : "s");
+
+  function layout(n) {
+    const cols = colsFor(n);
+    grid.style.setProperty("--cols", cols);
+    const scale = scaleFor(n);
+    grid.dataset.scale = scale;
+    const k = scale === "l" ? 1.22 : scale === "s" ? 0.84 : 1;
+    // Fill the screen only when every tile still has room for its content
+    const rows = Math.max(Math.ceil(n / cols), 1);
+    const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    wall.classList.remove("fit");
+    const room = window.innerHeight - grid.getBoundingClientRect().top - 60;
+    const wide = window.innerWidth > 1100;
+    wall.classList.toggle("fit", n > 0 && wide && room / rows >= 11.2 * rem * k);
+    // If any tile would clip its content, let the page scroll instead
+    if (wall.classList.contains("fit") &&
+        [...grid.children].some((el) => el.scrollHeight > el.clientHeight + 1)) {
+      wall.classList.remove("fit");
+    }
+  }
+
+  function filterLabel() {
+    const parts = [];
+    if (state.floor !== "all") parts.push(state.floor);
+    if (state.condition !== "all") parts.push(CONDITION_LABEL[state.condition]);
+    return parts.join(" · ");
+  }
+
+  // Keyed tiles: each workspace keeps its DOM node; only changed parts are replaced.
+  // The gear button is never replaced, so keyboard focus survives live updates.
+  const tiles = new Map(); // id -> { el, html }
+  const fromHTML = (html) => {
+    const tpl = document.createElement("template");
+    tpl.innerHTML = html.trim();
+    return tpl.content.firstElementChild;
+  };
+  const syncNode = (a, b) => { if (a.outerHTML !== b.outerHTML) a.replaceWith(b); };
+  function patchTile(el, html) {
+    const fresh = fromHTML(html);
+    if (el.className !== fresh.className) el.className = fresh.className;
+    el.setAttribute("aria-label", fresh.getAttribute("aria-label"));
+    const oldHead = el.querySelector(".head"), newHead = fresh.querySelector(".head");
+    syncNode(oldHead.querySelector(".name"), newHead.querySelector(".name"));
+    syncNode(oldHead.querySelector(".chip"), newHead.querySelector(".chip"));
+    const oldGear = oldHead.querySelector(".gear"), newGear = newHead.querySelector(".gear");
+    ["aria-expanded", "aria-label"].forEach((a) => oldGear.setAttribute(a, newGear.getAttribute(a)));
+    while (oldHead.nextSibling) oldHead.nextSibling.remove();
+    const rest = [...fresh.childNodes];
+    el.append(...rest.slice(rest.indexOf(newHead) + 1));
+  }
+  function reconcile(list, t) {
+    const empty = grid.querySelector(".none");
+    if (empty) empty.remove();
+    const keep = new Set();
+    let prev = null;
+    for (const s of list) {
+      keep.add(s.id);
+      const html = tileHTML(s, t);
+      let rec = tiles.get(s.id);
+      if (!rec) {
+        rec = { el: fromHTML(html), html };
+        tiles.set(s.id, rec);
+      } else if (rec.html !== html) {
+        patchTile(rec.el, html);
+        rec.html = html;
+      }
+      const want = prev ? prev.nextSibling : grid.firstChild;
+      if (want !== rec.el) grid.insertBefore(rec.el, want);
+      prev = rec.el;
+    }
+    for (const [id, rec] of tiles) if (!keep.has(id)) { rec.el.remove(); tiles.delete(id); }
+  }
+
+  function render() {
+    const t = Date.now();
+    const list = visible(t);
+    const pool = base();
+    if (list.length) {
+      reconcile(list, t);
+    } else {
+      tiles.forEach((rec) => rec.el.remove());
+      tiles.clear();
+      const why = state.selected.size === 0 ? "No workspaces selected." :
+        `No workspaces match ${esc(filterLabel() || "the current filters")}.`;
+      grid.innerHTML = `<div class="none"><span>${why}</span><button type="button" class="btn" data-clear>Clear filters</button></div>`;
+    }
+    renderSummary(pool, t);
+    layout(list.length);
+
+    document.getElementById("wsCount").textContent = `${state.selected.size} of ${spaces.length}`;
+    document.getElementById("mCount").textContent = `${state.globalMetrics.size} of ${ALL_METRICS.length}`;
+    const fl = filterLabel();
+    // Announced politely, and only when the text actually changes
+    const result = `Showing ${list.length} of ${state.selected.size} selected` + (fl ? " · " + fl : "");
+    const resultEl = document.getElementById("resultText");
+    if (resultEl.textContent !== result) resultEl.textContent = result;
+    const active = state.floor !== "all" || state.condition !== "all" ||
+      state.selected.size !== spaces.length && state.selected.size !== 20 ||
+      state.globalMetrics.size !== ALL_METRICS.length || state.overrides.size > 0;
+    document.getElementById("clearAll").hidden = !active;
+  }
+
+  function renderSummary(list, t) {
+    const st = list.map((s) => statusOf(s, t));
+    const count = (k) => st.filter((x) => x === k).length;
+    const live = list.filter((s, i) => st[i] !== "stale");
+    const people = live.reduce((a, s) => a + s.peopleCount, 0);
+    const util = Math.round(list.reduce((a, s) => a + s.utilizationTodayPct, 0) / Math.max(list.length, 1));
+    const out = live.filter(outOfRange).length;
+    const gs = list.map(ghostStats);
+    const gCount = gs.reduce((a, g) => a + g.count, 0);
+    const gMin = gs.reduce((a, g) => a + g.minutes, 0);
+    const bMin = gs.reduce((a, g) => a + g.booked, 0);
+    const gPct = bMin ? Math.round((gMin / bMin) * 100) : 0;
+    document.getElementById("summary").innerHTML = `
+      <div class="stat"><b>${count("available")}<small>/ ${list.length}</small></b><span><i class="dot" aria-hidden="true" style="background:var(--good-mark)"></i>Available now</span></div>
+      <div class="stat"><b>${count("occupied")}</b><span><i class="dot" aria-hidden="true" style="background:var(--busy-mark)"></i>Occupied</span></div>
+      <div class="stat"><b>${count("ghost")}</b><span><i class="dot" aria-hidden="true" style="background:var(--warn-mark)"></i>Booked · empty</span></div>
+      <div class="stat"><b>${people}</b><span>People in spaces</span></div>
+      <div class="stat"><b>${util}<small>%</small></b><span>Avg. used today</span></div>
+      <div class="stat"><b>${out}</b><span>Outside comfort</span></div>
+      <div class="stat"><b>${gCount}<small>· ${hrs(gMin)} · ${gPct}%</small></b><span>Ghosted meetings today</span></div>`;
+  }
+
+  // ---- Panels (outside the grid so re-renders keep them open) ----
+  let openPanel = null, openTrigger = null, openTile = null;
+
+  function place(panel, trigger) {
+    const r = trigger.getBoundingClientRect();
+    panel.hidden = false;
+    const pw = panel.offsetWidth, ph = panel.offsetHeight;
+    let left = Math.min(r.left, window.innerWidth - pw - 16);
+    left = Math.max(16, left);
+    let top = r.bottom + 6;
+    if (top + ph > window.innerHeight - 8 && r.top - ph - 6 > 8) top = r.top - ph - 6;
+    panel.style.left = left + "px";
+    panel.style.top = Math.max(8, top) + "px";
+  }
+  const focusables = (root) => [...root.querySelectorAll("button, input, select")]
+    .filter((el) => !el.disabled && el.offsetParent !== null);
+  // Move focus into the open panel (first control); Tab stays inside it until it closes
+  const focusInto = (panel) => { const f = focusables(panel)[0]; if (f) f.focus(); };
+  function openP(panel, trigger) {
+    closeP(false);
+    openPanel = panel; openTrigger = trigger;
+    trigger.setAttribute("aria-expanded", "true");
+    place(panel, trigger);
+  }
+  function closeP(restoreFocus = true) {
+    if (!openPanel) return;
+    openPanel.hidden = true;
+    if (openTrigger) {
+      openTrigger.setAttribute("aria-expanded", "false");
+      if (restoreFocus && document.contains(openTrigger)) openTrigger.focus();
+    }
+    const wasTile = openTile;
+    openPanel = null; openTrigger = null; openTile = null;
+    if (wasTile) {
+      const g = grid.querySelector(`[data-gear="${wasTile}"]`);
+      if (g) { g.setAttribute("aria-expanded", "false"); if (restoreFocus) g.focus(); }
+    }
+  }
+  document.addEventListener("pointerdown", (ev) => {
+    if (!openPanel) return;
+    if (openPanel.contains(ev.target)) return;
+    if (openTrigger && openTrigger.contains(ev.target)) return;
+    if (openTile && ev.target.closest(`[data-gear="${openTile}"]`)) return;
+    closeP(false);
+  });
+  document.addEventListener("keydown", (ev) => {
+    if (ev.key === "Escape") return closeP(true);
+    if (ev.key !== "Tab" || !openPanel) return;
+    const items = focusables(openPanel);
+    if (!items.length) return;
+    const first = items[0], last = items[items.length - 1];
+    if (!openPanel.contains(document.activeElement)) { ev.preventDefault(); first.focus(); return; }
+    if (ev.shiftKey && document.activeElement === first) { ev.preventDefault(); last.focus(); }
+    else if (!ev.shiftKey && document.activeElement === last) { ev.preventDefault(); first.focus(); }
+  });
+  window.addEventListener("resize", () => closeP(false));
+
+  // Workspace picker
+  const wsBtn = document.getElementById("wsBtn");
+  const wsPanel = document.getElementById("wsPanel");
+  const wsSearch = document.getElementById("wsSearch");
+  const wsList = document.getElementById("wsList");
+  const query = () => wsSearch.value.trim().toLowerCase();
+  const searchMatches = () => spaces.filter((s) => {
+    const q = query();
+    if (!q) return true;
+    return (s.name + " " + s.floor + " " + TYPE[s.type]).toLowerCase().includes(q);
+  });
+  function renderWsList() {
+    const items = searchMatches();
+    wsList.innerHTML = items.length ? items.map((s) => `
+      <label class="check" for="ws-${s.id}">
+        <input type="checkbox" id="ws-${s.id}" data-ws="${s.id}" ${state.selected.has(s.id) ? "checked" : ""}>
+        <span>${esc(s.name)}</span>
+        <span class="sub">${s.floor} · ${TYPE[s.type]}</span>
+      </label>`).join("") : '<div class="empty">No workspace matches that search.</div>';
+  }
+  wsBtn.addEventListener("click", () => {
+    if (openPanel === wsPanel) return closeP(true);
+    renderWsList();
+    openP(wsPanel, wsBtn);
+    wsSearch.focus();
+  });
+  wsSearch.addEventListener("input", renderWsList);
+  wsList.addEventListener("change", (ev) => {
+    const id = ev.target.dataset.ws;
+    if (!id) return;
+    ev.target.checked ? state.selected.add(id) : state.selected.delete(id);
+    save(); render();
+  });
+  document.getElementById("wsAll").addEventListener("click", () => {
+    searchMatches().forEach((s) => state.selected.add(s.id));
+    save(); renderWsList(); render();
+  });
+  document.getElementById("wsNone").addEventListener("click", () => {
+    const items = query() ? searchMatches() : spaces;
+    items.forEach((s) => state.selected.delete(s.id));
+    save(); renderWsList(); render();
+  });
+  wsPanel.querySelectorAll("[data-first]").forEach((b) => b.addEventListener("click", () => {
+    state.selected = new Set(spaces.slice(0, +b.dataset.first).map((s) => s.id));
+    save(); renderWsList(); render();
+  }));
+
+  // Metric checkboxes (shared by global and per-tile panels)
+  function metricGroupsHTML(prefix, active) {
+    const groups = [...new Set(METRICS.map((m) => m.group))];
+    return groups.map((g) => `<div><h3>${g}</h3>${METRICS.filter((m) => m.group === g).map((m) => `
+      <label class="check" for="${prefix}-${m.key}">
+        <input type="checkbox" id="${prefix}-${m.key}" data-metric="${m.key}" ${active.has(m.key) ? "checked" : ""}>
+        <span>${m.label}</span>
+      </label>`).join("")}</div>`).join("");
+  }
+
+  const mBtn = document.getElementById("mBtn");
+  const mPanel = document.getElementById("mPanel");
+  const mGroups = document.getElementById("mGroups");
+  const renderM = () => { mGroups.innerHTML = metricGroupsHTML("gm", state.globalMetrics); };
+  mBtn.addEventListener("click", () => {
+    if (openPanel === mPanel) return closeP(true);
+    renderM();
+    openP(mPanel, mBtn);
+    focusInto(mPanel);
+  });
+  mGroups.addEventListener("change", (ev) => {
+    const k = ev.target.dataset.metric;
+    if (!k) return;
+    ev.target.checked ? state.globalMetrics.add(k) : state.globalMetrics.delete(k);
+    save(); render();
+  });
+  document.getElementById("mAllOn").addEventListener("click", () => {
+    state.globalMetrics = new Set(ALL_METRICS);
+    save(); renderM(); render();
+  });
+  document.getElementById("mReset").addEventListener("click", () => {
+    state.overrides.clear();
+    save(); render();
+  });
+
+  // Per-tile gear
+  const tPanel = document.getElementById("tPanel");
+  const tGroups = document.getElementById("tGroups");
+  const renderT = () => {
+    const s = byId.get(openTile);
+    document.getElementById("tTitle").textContent = `Metrics for ${s.name}`;
+    tGroups.innerHTML = metricGroupsHTML("tm", metricsFor(s.id));
+  };
+  grid.addEventListener("click", (ev) => {
+    if (ev.target.closest("[data-clear]")) return clearFilters();
+    const g = ev.target.closest("[data-gear]");
+    if (!g) return;
+    const id = g.dataset.gear;
+    if (openPanel === tPanel && openTile === id) return closeP(true);
+    openP(tPanel, g);
+    openTile = id;
+    openTrigger = null; // tracked by id: the gear node survives updates, but its tile can be filtered out
+    g.setAttribute("aria-expanded", "true");
+    renderT();
+    place(tPanel, g);
+    focusInto(tPanel);
+  });
+  tGroups.addEventListener("change", (ev) => {
+    const k = ev.target.dataset.metric;
+    if (!k || !openTile) return;
+    const set = new Set(metricsFor(openTile));
+    ev.target.checked ? set.add(k) : set.delete(k);
+    const same = set.size === state.globalMetrics.size && [...set].every((x) => state.globalMetrics.has(x));
+    same ? state.overrides.delete(openTile) : state.overrides.set(openTile, set);
+    save(); render();
+  });
+  document.getElementById("tDefault").addEventListener("click", () => {
+    if (!openTile) return;
+    state.overrides.delete(openTile);
+    save(); renderT(); render();
+  });
+
+  // Floor and condition
+  const floorSeg = document.getElementById("floorSeg");
+  const syncFloor = () => floorSeg.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x.dataset.v === state.floor)));
+  floorSeg.addEventListener("click", (ev) => {
+    const b = ev.target.closest("button");
+    if (!b) return;
+    state.floor = b.dataset.v;
+    syncFloor(); save(); render();
+  });
+  const condSel = document.getElementById("condSel");
+  condSel.addEventListener("change", () => { state.condition = condSel.value; save(); render(); });
+
+  function clearFilters() {
+    state.floor = "all";
+    state.condition = "all";
+    state.selected = new Set(spaces.slice(0, 20).map((s) => s.id));
+    state.globalMetrics = new Set(ALL_METRICS);
+    state.overrides.clear();
+    condSel.value = "all";
+    syncFloor(); closeP(false); save(); render();
+  }
+  document.getElementById("clearAll").addEventListener("click", clearFilters);
+
+  // Hover read-out on sparklines (browsers; kiosk screens show the peak label)
+  grid.addEventListener("pointermove", (ev) => {
+    const box = ev.target.closest(".spark");
+    if (!box) return;
+    const s = byId.get(box.closest(".tile").dataset.id);
+    const r = box.getBoundingClientRect();
+    const i = clamp(Math.round(((ev.clientX - r.left) / r.width) * (HOURS - 1)), 0, HOURS - 1);
+    const hoursAgo = HOURS - 1 - i;
+    const d = new Date(Date.now() - hoursAgo * 3600000);
+    const label = hoursAgo === 0 ? "This hour" : String(d.getHours()).padStart(2, "0") + ":00";
+    box.querySelector(".tip").textContent = `${label} · peak ${s.hourly[i]}`;
+    const cross = box.querySelector(".cross");
+    const x = (i / (HOURS - 1)) * 100;
+    cross.setAttribute("x1", x); cross.setAttribute("x2", x);
+    cross.setAttribute("visibility", "visible");
+  });
+  grid.addEventListener("pointerout", (ev) => {
+    const box = ev.target.closest(".spark");
+    if (!box || box.contains(ev.relatedTarget)) return;
+    const s = byId.get(box.closest(".tile").dataset.id);
+    box.querySelector(".tip").textContent = `12 h · peak ${Math.max(...s.hourly)}`;
+    box.querySelector(".cross").setAttribute("visibility", "hidden");
+  });
+
+  // Pause / resume live updates (WCAG 2.2.2) in browser mode
+  let paused = false;
+  const pauseBtn = document.getElementById("pauseBtn");
+  pauseBtn.addEventListener("click", () => {
+    paused = !paused;
+    pauseBtn.setAttribute("aria-pressed", String(paused));
+    pauseBtn.textContent = paused ? "Resume updates" : "Pause updates";
+    document.getElementById("live").classList.toggle("paused", paused);
+    tick();
+  });
+
+  // Clock
+  const clockEl = document.getElementById("clock");
+  const asofEl = document.getElementById("asof");
+  let lastData = Date.now();
+  const fmt = (d, sec) => d.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", second: sec ? "2-digit" : undefined });
+  function tick() {
+    clockEl.textContent = fmt(new Date(), false);
+    asofEl.textContent = (paused ? "Paused · data as of " : "Live · data as of ") + fmt(new Date(lastData), true);
+  }
+
+  // Simulated telemetry: a few workspaces change every 5 s (real system: SSE from the BFF)
+  function simulate() {
+    if (paused) return;
+    const t = Date.now();
+    for (let n = 0; n < 4; n++) {
+      const s = pick(spaces);
+      if (s.name === "Simssee") continue; // stays stale on purpose
+      if (rnd() < 0.35) {
+        const delta = pick([-2, -1, -1, 1, 1, 2]);
+        s.peopleCount = clamp(s.peopleCount + delta, 0, s.capacity + 1);
+        s.presence = s.peopleCount > 0;
+        s.hourly[HOURS - 1] = Math.max(s.hourly[HOURS - 1], s.peopleCount);
+        if (s.presence && s.utilizationTodayPct < 98) s.utilizationTodayPct += 1;
+      }
+      s.temperatureC = +clamp(s.temperatureC + (rnd() - 0.5) * 0.3, 19.5, 27).toFixed(1);
+      s.humidityPct = Math.round(clamp(s.humidityPct + (rnd() - 0.5) * 2, 25, 65));
+      s.tvocIndex = +clamp(s.tvocIndex + (rnd() - 0.5) * 0.2, 1, 4.5).toFixed(1);
+      s.noiseDba = Math.round(clamp(s.noiseDba + (rnd() - 0.5) * 3, 26, 52));
+      s.updatedAt = t;
+    }
+    lastData = t;
+    render();
+    tick();
+  }
+
+  // Burn-in protection: shift the whole wall by 1px every 2 minutes
+  const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const shifts = ["0,0", "1px,0", "1px,1px", "0,1px"];
+  let shiftIdx = 0;
+  setInterval(() => {
+    if (motionQuery.matches) { wall.style.transform = ""; return; }
+    shiftIdx = (shiftIdx + 1) % shifts.length;
+    wall.style.transform = `translate(${shifts[shiftIdx]})`;
+  }, 120000);
+
+  // Keep the screen awake where the browser allows it
+  try { navigator.wakeLock && navigator.wakeLock.request("screen").catch(() => {}); } catch (e) {}
+
+  window.addEventListener("resize", () => layout(visible(Date.now()).length));
+  condSel.value = state.condition;
+  syncFloor();
+  render();
+  tick();
+  setInterval(tick, 1000);
+  setInterval(simulate, 5000);
+})();
+</script>
